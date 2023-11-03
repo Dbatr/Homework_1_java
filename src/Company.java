@@ -55,9 +55,9 @@ public class Company {
             }
         }
         System.out.println("Сотрудник с самой низкой зарплатой: " + lowestSalaryEmployee.getName()
-                + ". У него зарплата: " + String.format("%.2f", lowestSalary) + " долларов.");
+                + " (ID: " + lowestSalaryEmployee.getEmployeeId() + "). У него зарплата: " + String.format("%.2f", lowestSalary) + " долларов.");
         System.out.println("Сотрудник с самой высокой зарплатой: " + highestSalaryEmployee.getName()
-                + ". У него зарплата: " + String.format("%.2f", highestSalary) + " долларов.");
+                + " (ID: " + highestSalaryEmployee.getEmployeeId() + "). У него зарплата: " + String.format("%.2f", highestSalary) + " долларов.");
     }
 
 

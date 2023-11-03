@@ -26,9 +26,6 @@ public abstract class Employee {
                 "Зарплата в $: " + formatSalary(salary));
     }
 
-    public String getName() {
-        return name;
-    }
 
     private String getYearsString(int years) {
         if (years >= 11 && years <= 14) {
@@ -46,5 +43,12 @@ public abstract class Employee {
 
     private String formatSalary(double salary) {
         return String.format("%.2f", salary);
+    }
+
+    public int getEmployeeId() {
+        return employeeId;
+    }
+    public String getName() {
+        return name;
     }
 }
