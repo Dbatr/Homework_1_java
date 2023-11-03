@@ -23,7 +23,7 @@ public abstract class Employee {
                 "Имя: " + name + "\n" +
                 "Должность: " + position + "\n" +
                 "Стаж: " + getYearsString(yearsOfService) + "\n" +
-                "Зарплата в $: " + salary);
+                "Зарплата в $: " + formatSalary(salary));
     }
 
     public String getName() {
@@ -42,5 +42,9 @@ public abstract class Employee {
             return years + " года";
         }
         return years + " лет";
+    }
+
+    private String formatSalary(double salary) {
+        return String.format("%.2f", salary);
     }
 }
