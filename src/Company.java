@@ -13,7 +13,7 @@ public class Company {
                                         "Пожалуйста, введите положительное значение.");
 
             } catch (java.util.InputMismatchException e) {
-                System.out.println("Ошибка: Некорректный ввод. Пожалуйста, введите положительное значение.");
+                System.out.println("Ошибка: Некорректный ввод. Пожалуйста, введите число.");
                 scanner.next();
             }
         }
