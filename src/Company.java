@@ -3,9 +3,22 @@ public class Company {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Введите количество сотрудников: ");
-        int numberOfEmployees = scanner.nextInt();
+        int numberOfEmployees = 0;
+        while (numberOfEmployees <= 0) {
+            System.out.print("Введите количество сотрудников: ");
+            try {
+                numberOfEmployees = scanner.nextInt();
+                if (numberOfEmployees <= 0)
+                    System.out.println("Предупреждение: Введено некорректное количество сотрудников. " +
+                                        "Пожалуйста, введите положительное значение.");
+
+            } catch (java.util.InputMismatchException e) {
+                System.out.println("Ошибка: Некорректный ввод. Пожалуйста, введите положительное значение.");
+                scanner.next();
+            }
+        }
         System.out.println();
+
         Employee[] employees = Generate.generateEmployeeData(numberOfEmployees);
 
         Employee lowestSalaryEmployee = null;
