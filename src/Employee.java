@@ -22,23 +22,23 @@ public abstract class Employee {
                 "ID сотрудника: " + employeeId + "\n" +
                 "Имя: " + name + "\n" +
                 "Должность: " + position + "\n" +
-                "Стаж: " + getYearsString(yearsOfService) + "\n" +
+                "Стаж: " + getYearsString() + "\n" +
                 "Зарплата в $: " + formatSalary(salary));
     }
 
 
-    private String getYearsString(int years) {
-        if (years >= 11 && years <= 14) {
-            return years + " лет";
+    private String getYearsString() {
+        if (yearsOfService >= 11 && yearsOfService <= 14) {
+            return yearsOfService + " лет";
         }
-        int lastDigit = years % 10;
+        int lastDigit = yearsOfService % 10;
         if (lastDigit == 1) {
-            return years + " год";
+            return yearsOfService + " год";
         }
         if (lastDigit >= 2 && lastDigit <= 4) {
-            return years + " года";
+            return yearsOfService + " года";
         }
-        return years + " лет";
+        return yearsOfService + " лет";
     }
 
     private String formatSalary(double salary) {
