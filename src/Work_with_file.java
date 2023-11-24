@@ -99,10 +99,10 @@ public class Work_with_file {
             double salary = Double.parseDouble(parts[13].replace(",", "."));
 
             if (position.equals("Менеджер")) {
-                String department = extractDepartment(line);
+                String department = extractDepartmentOrPrLang(line);
                 return new Manager(name, employeeId, yearsOfService, salary, department);
             } else if (position.equals("Разработчик")) {
-                String programmingLanguage = extractDepartment(line);
+                String programmingLanguage = extractDepartmentOrPrLang(line);
                 return new Developer(name, employeeId, yearsOfService, salary, programmingLanguage);
             }
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
@@ -111,16 +111,11 @@ public class Work_with_file {
         return null;
 
     }
-    private static String extractDepartment(String line) {
+    private static String extractDepartmentOrPrLang(String line) {
         int start = 14;
         int end = line.lastIndexOf(".");
         return line.substring(start, end).trim();
     }
 
-    private static String extractProgrammingLanguage(String line) {
-        int start = 14;
-        int end = line.indexOf(".");
-        return line.substring(start, end).trim();
-    }
 
 }
