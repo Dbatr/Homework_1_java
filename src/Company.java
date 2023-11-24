@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 public class Company {
     public static void main(String[] args) {
@@ -21,30 +22,41 @@ public class Company {
 
         Employee[] employees = Generate.generateEmployeeData(numberOfEmployees);
 
-        Employee lowestSalaryEmployee = null;
-        Employee highestSalaryEmployee = null;
-        double lowestSalary = Double.MAX_VALUE;
-        double highestSalary = Double.MIN_VALUE;
+        String filename = "employee_records.txt";
+        //Work_with_file.saveEmployeeRecordsToFile(employees, filename);
 
-        for (Employee employee : employees) {
-            employee.introduce();
-            employee.work();
-            System.out.println();
+       //Work_with_file.clearEmployeeFile(filename);
 
-            double salary = employee.getSalary();
-            if (salary < lowestSalary) {
-                lowestSalary = salary;
-                lowestSalaryEmployee = employee;
+        int employeeIdToDelete = 10913; // Замените на конкретный ID, который нужно удалить
+        //Work_with_file.deleteEmployeeById(employeeIdToDelete, "employee_records.txt");
+
+        List<Employee> employeesList = Work_with_file.parseEmployeesFromFile(filename);
+        if (!employeesList.isEmpty()) {
+            Employee lowestSalaryEmployee = employeesList.get(0);
+            Employee highestSalaryEmployee = employeesList.get(0);
+
+            for (Employee employee : employeesList) {
+                employee.introduce();
+                System.out.println();
+
+                double salary = employee.getSalary();
+                if (salary < lowestSalaryEmployee.getSalary()) {
+                    lowestSalaryEmployee = employee;
+                }
+                if (salary > highestSalaryEmployee.getSalary()) {
+                    highestSalaryEmployee = employee;
+                }
             }
-            if (salary > highestSalary) {
-                highestSalary = salary;
-                highestSalaryEmployee = employee;
-            }
+
+            System.out.println("Сотрудник с самой низкой зарплатой: " + lowestSalaryEmployee.getName()
+                    + " (ID: " + lowestSalaryEmployee.getEmployeeId() + "). У него зарплата: " + lowestSalaryEmployee.getSalary() + " долларов.");
+
+            System.out.println("Сотрудник с самой высокой зарплатой: " + highestSalaryEmployee.getName()
+                    + " (ID: " + highestSalaryEmployee.getEmployeeId() + "). У него зарплата: " + highestSalaryEmployee.getSalary() + " долларов.");
+        } else {
+            System.out.println("Список сотрудников пуст.");
         }
-        System.out.println("Сотрудник с самой низкой зарплатой: " + lowestSalaryEmployee.getName()
-                + " (ID: " + lowestSalaryEmployee.getEmployeeId() + "). У него зарплата: " + String.format("%.2f", lowestSalary) + " долларов.");
-        System.out.println("Сотрудник с самой высокой зарплатой: " + highestSalaryEmployee.getName()
-                + " (ID: " + highestSalaryEmployee.getEmployeeId() + "). У него зарплата: " + String.format("%.2f", highestSalary) + " долларов.");
+
     }
 
 

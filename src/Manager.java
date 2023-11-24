@@ -6,7 +6,12 @@ public class Manager extends Employee {
         this.department = department;
     }
     @Override
-    public void work() {
-        System.out.println("Я управляю проектами и командами в отделе " + department + ".");
+    public String work() {
+        return "Я управляю проектами и командами в отделе " + department + ".";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + work();
     }
 }

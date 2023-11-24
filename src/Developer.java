@@ -6,7 +6,12 @@ public class Developer extends Employee {
         this.programmingLanguage = programmingLanguage;
     }
     @Override
-    public void work() {
-        System.out.println("Я программирую на " + programmingLanguage + " и разрабатываю ПО.");
+    public String work() {
+        return "Я программирую на " + programmingLanguage + " и разрабатываю ПО.";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + work();
     }
 }

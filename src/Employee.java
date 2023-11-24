@@ -16,7 +16,7 @@ public abstract class Employee {
         this.salary = salary;
     }
 
-    public abstract void work();
+    public abstract String work();
     public void introduce() {
         System.out.println("Привет, меня зовут " + name + ". Вот мои данные:" + "\n" +
                 "ID сотрудника: " + employeeId + "\n" +
@@ -50,5 +50,14 @@ public abstract class Employee {
     }
     public String getName() {
         return name;
+    }
+
+    @Override
+    public String toString() {
+        return "ID сотрудника: " + employeeId  +
+                " Имя: " + name +
+                " Должность: " + position +
+                " Стаж: " + getYearsString() +
+                " Зарплата в $: " + formatSalary(salary) + " ";
     }
 }
